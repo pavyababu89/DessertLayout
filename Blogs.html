@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inria Sans', sans-serif;
+}
+
+body {
+    background: #fff;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    background: #FFCCCC;
+    padding: 18px 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);;
+}
+
+/* LEFT */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+.brand-name {
+    font-size: 26px;
+    font-weight: 700;
+    color: #6b0015;
+}
+
+/* CENTER MENU */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+    margin-top: 25px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #710125;
+}
+
+/* RIGHT */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* SEARCH */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 30px;
+    padding: 6px 14px;
+    width: 220px;
+    border: 2px solid #710125;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 15px;
+}
+
+.search-box i {
+    color: #6b0015;
+    cursor: pointer;
+}
+
+/* SEARCH DROPDOWN */
+.search-dropdown {
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    background: #fff0f0;
+    border: 2px solid #710125;
+    border-radius: 10px;
+    padding: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+    z-index: 1000;
+}
+
+.search-dropdown a {
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #710125;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #710125;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.search-dropdown a:hover {
+    background: #710125;
+    color: #fff;
+}
+
+/* BUTTON */
+.login-btn {
+    background: #fff;
+    border: 2px solid #6b0015;
+    color: #6b0015;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+.login-btn:hover {
+    background: #6b0015;
+    color: #fff;
+} 
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+/* DROPDOWN BOX */
+.dropdown-menu {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background: #fff0f0;
+    border: 2px solid #6b0015;
+    width: 200px;
+    list-style: none;
+    padding: 12px 0;
+    display: none;
+    z-index: 999;
+}
+
+/* ITEMS */
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: #6b0015;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* HOVER EFFECT */
+.dropdown-menu li:hover > a {
+    color: #D72D52 !important;
+} 
+
+/* SECTION */
+.blog-section {
+    width: 100%;
+    margin: 30px auto;
+    padding: 0 60px;
+    margin-bottom: 20px;
+}
+
+/* TITLE */
+.blog-card-content {
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* DATE */
+.blog-card-date {
+    font-size: 20px;
+    font-weight: 700;
+    color: #7a0026;
+    margin-bottom: 10px;
+}
+
+/* TITLE */
+.blog-card-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #7a0026;
+    line-height: 1.3;
+}
+.blog-heading {
+    color: #8b0030;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.blog-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.blog-subheading {
+    color: #8b0030;
+    font-weight: bold;
+    font-size: 22px;
+    margin: 10px 0 5px;
+}
+
+/* BUTTON */
+.blog-more-content {
+    display: none;
+}
+
+.read-btn {
+    background-color: #d43c5c;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 100px;
+   
+}
+
+.blog-close-btn {
+    background-color: #d43c5c;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.blog-row {
+    display: flex;
+    align-items: stretch;   /* 👈 VERY IMPORTANT */
+    gap: 30px;
+    width:100%;
+}
+
+/* LEFT CARD */
+.blog-card {
+    width: 360px;
+    background: #fff3f3;
+    border-radius: 20px;
+    padding: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+/* IMAGE WRAPPER */
+.blog-card-image {
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 16px;
+}
+
+/* IMAGE */
+.blog-card-image img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+
+/* RIGHT CARD */
+.blog-content-card {
+    flex: 1;
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.15);
+    height: 100%;
+}
+.blog-title{
+    text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #6b0015;
+  margin-bottom: 25px;
+}
+
+
+/* FOOTER BASE */
+.quick-footer {
+    background: #ffd6d6;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+/* SCALLOP STRIP INSIDE FOOTER */
+.footer-scallop {
+    width: 100%;
+    height: 80px;
+    background:
+        radial-gradient(
+            circle at 60px 80px,
+            #ffd6d6 60px,
+            transparent 61px
+        ) repeat-x;
+    background-size: 120px 80px;
+}
+
+/* TITLE */
+.quick-title {
+    margin-top: 5px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #6b0015;
+    display: inline-block;
+    position: relative;
+}
+
+.quick-title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -6px;
+    width: 80%;
+    height: 3px;
+    background: #6b0015;
+}
+
+/* GRID */
+.quick-container {
+    max-width: 1200px;
+    margin: 50px auto 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* COLUMNS */
+.quick-col {
+    padding: 0 30px;
+    text-align: left;
+    font-size: 20px;
+    color: #6b0015;
+    position: relative;
+    font-weight: 600;
+}
+.quick-footer a {
+    color: #6b0015;      /* same as your footer text */
+    text-decoration: none; /* remove underline */
+    font-weight: 600;     /* optional, same as text */
+}
+
+/* VERTICAL LINES */
+.quick-col:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 2px;
+    background: #9a4b5a;
+}
+
+/* LOGO */
+.logo-col img {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+/* CONTACT */
+.contact-col p {
+    margin-bottom: 10px;
+}
+
+.social i {
+    font-size: 22px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+/* BRAND COLORS */
+.youtube {
+    color: #FF0000;
+}
+
+.facebook {
+    color: #1877F2;
+}
+
+.instagram {
+    color: #E4405F;
+}
+
+/* COPYRIGHT BAR */
+.copyright-bar {
+    text-align: center;
+    padding: 12px 0;
+    font-size: 16px;
+    color: black;
+    background: #ffffff;
+    font-weight: 600;
+}
+
+/* MODAL OVERLAY */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* MODAL BOX */
+.login-modal {
+    background: #fff;
+    width: 360px;
+    padding: 30px 25px;
+    border-radius: 16px;
+    position: relative;
+    font-family: 'Inria Sans', sans-serif;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    background: #e23c5b;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* TITLE */
+.login-modal h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+/* INPUT */
+.login-modal input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: #f1f1f1;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* MOBILE LINK */
+.with-mobile {
+    color: #0047ff;
+    font-size: 16px;
+    float: right;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+/* OTP BUTTON */
+.otp-btn {
+    width: 100%;
+    background: #ffd1d1;
+    border: none;
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+    color: #6b0015;
+    font-weight: 600;
+}
+
+.otp-btn i {
+    margin-left: 8px;
+}
+
+/* TERMS */
+.terms-text {
+    font-size: 14px;
+    margin-top: 20px;
+    color: #000;
+    line-height: 1.5;
+}
+@media (max-width: 1024px) {
+
+    /* NAVBAR */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .nav-right {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .search-box {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .logo {
+        width: 160px;
+    }
+
+    /* BLOG SECTION */
+    .blog-section {
+        padding: 0 20px;
+    }
+
+    .blog-title {
+        font-size: 24px;
+    }
+
+    /* BLOG ROW → STACK */
+    .blog-row {
+        flex-direction: column;
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    /* LEFT CARD */
+    .blog-card {
+        width: 100%;
+        max-width: 360px;
+        margin: auto;
+    }
+
+    .blog-card-image img {
+        height: 220px;
+    }
+
+    /* RIGHT CONTENT */
+    .blog-content-card {
+        width: 100%;
+    }
+
+    .blog-heading {
+        font-size: 22px;
+    }
+
+    .blog-text {
+        font-size: 16px;
+    }
+
+    .blog-subheading {
+        font-size: 20px;
+    }
+
+    /* READ BUTTON */
+    .read-btn {
+        margin-left: 0;
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    /* FOOTER */
+    .quick-container {
+        grid-template-columns: 1fr;
+        row-gap: 30px;
+        text-align: center;
+    }
+
+    .quick-col {
+        padding: 0;
+    }
+
+    .quick-col:not(:last-child)::after {
+        display: none;
+    }
+
+    .logo-col img {
+        margin: auto;
+    }
+
+    /* MODAL */
+    .login-modal {
+        width: 90%;
+        max-width: 360px;
+    }
+
+    /* COPYRIGHT */
+    .copyright-bar {
+        font-size: 14px;
+    }
+}
+
+</style>
+</head>
+<body>
+    <!-- NAV BAR -->
+    <nav class="navbar">
+
+    <!-- Left: Logo -->
+    <div class="nav-left">
+        <a href="Homepage.html">
+        <img src="logo.png" alt="Dessert Logo" class="logo">
+        </a>
+    </div>
+
+    <!-- Center: Menu -->
+    <ul class="nav-menu">
+        <li><a href="AboutUs.html">About Us</a></li>
+        <li class="dropdown">
+        <a href="#" id="dessertToggle">Desserts ▾</a>
+
+    <ul class="dropdown-menu">
+        <li><a href="AllDesserts.html">All Desserts</a></li>
+        <li><a href="Pastries.html">Pastry</a></li>
+        <li><a href="Brownies.html">Brownies</a></li>
+        <li><a href="Tarts.html">Tart</a></li>
+        <li><a href="Teacakes.html">Tea Cake</a></li>
+        <li><a href="Cupcakes.html">Cup Cake</a></li>
+        <li><a href="Jarcakes.html">Jar Cake</a></li>
+        <li><a href="Combos.html">Combos</a></li>
+    </ul>
+</li>
+        <li><a href="Contact.html">Contact</a></li>
+    </ul>
+
+    <!-- Right: Search + Button -->
+    <div class="nav-right">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="search-dropdown" id="searchDropdown">
+            <a href="Brownies.html">Brownies</a>
+            <a href="Pastries.html">Pastry</a>
+            <a href="Cupcakes.html">Cup cake</a>
+            <a href="Tarts.html">Tart</a>
+            <a href="Teacakes.html">Tea cake</a>
+            <a href="Jarcakes.html">Jar cake</a>
+    </div>
+        </div>
+
+        <button class="login-btn" id="openLogin">Log In / Sign Up</button>
+
+    </div>
+</nav>
+
+<!-- BLOGS -->
+
+ <div class="blog-section">
+
+    <div class="blog-title">Blogs</div>
+
+    <!-- BLOG ITEM -->
+    <div class="blog-row">
+
+    <!-- LEFT IMAGE CARD -->
+    <div class="blog-card">
+    <div class="blog-card-image">
+        <img src="Blog1.png" alt="Raksha Bandhan">
+    </div>
+
+    <div class="blog-card-content">
+        <p class="blog-card-date">29th July, 2025</p>
+        <h3 class="blog-card-title">
+            Raksha Bandhan Celebration Ideas to Make the Day Truly Memorable
+        </h3>
+    </div>
+</div>
+
+
+    <!-- RIGHT CONTENT CARD -->
+    <div class="blog-content-card">
+        <div class="blog-heading">
+            Raksha Bandhan Celebration Ideas to Make the Day Truly Memorable
+        </div>
+
+        <div class="blog-text">
+            Raksha Bandhan is not just about tying a Rakhi on your brother’s wrist;
+            it’s about cherishing the  special sibling bond you share with them.No matter if you live in 
+            the same house or different cities,celebrating Raksha Bandan deepens your connection.It's an opportunity
+            to slow down and express love to your siblings.<br><br>
+            Why not try something different this year? Whether you are celebrating in person or online, we've compiled a 
+            list of thoughtful Rakhi celebration ideas, including online Rakhi celebration ideas and gifting suggestions
+             to make your Raksha Bandhan special.
+        </div>
+
+        <div class="blog-subheading">Personalised Rakhi and Sweet Delight</div>
+
+        <div class="blog-text">
+            This one is one of the most heartfelt and creative Rakhi ideas. Make a Rakhi by yourself 
+            or customise one you've bought. Pair it with The Dessert House’s 
+            Raksha Bandhan Chocolate Rochers Gift Box or Raksha Bandhan Mithai Confectionery Box 
+            and a thoughtful card. It is a tiny yet kind gesture (and tasty).
+        </div>
+
+    <div class="blog-subheading">Cakes That Say It All</div>
+    <a href="javascript:void(0)" class="read-btn" onclick="showMore(this)">Click to read</a>
+
+
+        <div class="blog-more-content">
+
+            <div class="blog-text">
+        If food is your love language, a special cake is an absolute must-have. Try The Dessert House's Raksha Bandhan Kunafa Cake
+         for a fusion touch Dubai-style, or our Raksha Bandhan Mix Berry Chocolate Cake for those who want a classic with a 
+        fruity punch.<br><br>
+        Too far away? Just order the cake online from our vast menu of delectable cakes and send the love to where
+         they live. It's one of the best online Rakhi celebration ideas for siblings who live away.<br><br>
+        What better way than to dress in comfortable PJs and watch your favourite movies together! 
+        And to go perfectly well with the movie, serve the The Dessert House dessert board made with cupcakes, 
+        pastries, cookies, and don't forget the gift—the Raksha Bandhan Mini Brownies Gift Box. For a more luxurious feel, 
+        consider gifting our Raksha Bandhan Celebration Gift Hamper Box.
+        </div>
+
+        <div class="blog-subheading">Virtual celebrations With a Delicious Touch</div>
+
+        <div class="blog-text">
+        Not together with your sibling this Rakhi? Not a problem. Opt for virtual Rakhi celebration ideas such as a 
+        surprise doorstep delivery of the Rakhi, Raksha Bandhan Premium Gift Hamper Basket, and a cake. Simply buy 
+        cake online from The Dessert House. With a video call, a shared playlist, and dessert in hand, you'll feel 
+        closer in no time.
+        </div>
+
+        <div class="blog-subheading">Perfect Gift Hamper Exchange</div>
+
+        <div class="blog-text">
+        Up your gift-giving game with The Dessert House's limited-edition hampers and boxes.
+         Whether you are going simple or crazy premium, you'll find something perfect:
+        </div>
+
+        <div class="blog-subheading">Gift Bags</div>
+
+        <div class="blog-text">
+        Raksha Bandhan Premium Gift Hamper Bag<br>
+        Raksha Bandhan Luxury Gift Hamper Bag<br>
+        Raksha Bandhan Indulgence Gift Hamper Bag
+        </div>
+
+        <div class="blog-subheading">Gift Boxes</div>
+
+        <div class="blog-text">
+        Raksha Bandhan Celebration Gift Hamper Box<br>
+        Raksha Bandhan Premium Gift Hamper Box<br>
+        Raksha Bandhan Luxury Gift Hamper Box<br>
+        Raksha Bandhan Indulgence Gift Hamper Box
+        </div>
+
+        <div class="blog-subheading">Gift Hamper Baskets</div>
+
+        <div class="blog-text">
+        Raksha Bandhan Luxury Gift Hamper Basket<br>
+        Raksha Bandhan Indulgence Gift Hamper Basket<br><br>
+
+        Each one is personalised to reflect your bond and includes luxury treats such as brownies,<br>
+         chocolates, and gourmet snacks.<br><br>
+
+        Note: Our Raksha Bandhan special products will only be available for a short time, from August 1st to<br>
+         August 11th, 2025. Shop soon to surprise your loved ones with our limited-period festive delights!
+        </div>
+        
+        
+        <div style="text-align:center; margin-top: 25px;">
+                    <button class="blog-close-btn" onclick="hideMore(this)">Close</button>
+                </div>
+        
+</div>
+</div>
+</div>
+
+    <!-- BLOG ITEM -->
+    <div class="blog-row">
+
+    <!-- LEFT IMAGE CARD -->
+    <div class="blog-card">
+    <div class="blog-card-image">
+        <img src="Blog2.png" alt="Raksha Bandhan">
+    </div>
+
+    <div class="blog-card-content">
+        <p class="blog-card-date">29th July, 2025</p>
+        <h3 class="blog-card-title">
+            Happy Wife Day Quotes,Wishes and Messages To Make Her Smile
+        </h3>
+    </div>
+</div>
+
+
+    <!-- RIGHT CONTENT CARD -->
+    <div class="blog-content-card">
+        <div class="blog-heading">
+            Happy Wife Day Quotes,Wishes and Messages To Make Her Smile
+        </div>
+
+        <div class="blog-text">
+            Every love story is unique, but the bond between a husband and wife is something truly timeless. 
+            Wife’s Day is the perfect moment to pause, appreciate, and remind her how much she means to you. 
+            Words have a way of reaching the heart like nothing else, and sometimes a simple line can carry the weight 
+            of a thousand emotions. Whether you’re looking for Happy Wife Day quotes, heartfelt wishes, or short 
+            and sweet messages, here’s a collection to help you put your feelings into words.
+        </div>
+
+        <div class="blog-subheading">Happy Wife Day Quotes</div>
+
+        <div class="blog-text">
+            Here are some thoughtful wife day quotes you can share to express your gratitude and admiration:<br><br>
+            “A wife is not just a partner; she is the heart of the home and the soul of love.”<br>
+            “Behind every happy man is a wife who believed in him even when he doubted himself.”<br>
+            “A good wife brings joy to your life, strength to your struggles, and peace to your soul.”<br>
+            “Marriage isn’t about finding someone you can live with—it’s about finding someone you can’t live without. 
+            That’s my wife.”<br>
+            “A wife’s love is the most beautiful chapter in a man’s story.”
+        </div>
+        <a href="javascript:void(0)" class="read-btn" onclick="showMore(this)">Click to read</a>
+    
+        
+        <div class="blog-subheading">Romantic Wife Day Quotes</div>
+            <div class="blog-more-content">
+
+            <div class="blog-text">
+                If you want to add a little romance to her day, these words say it all:<br>
+                “My wife, my love, my forever—Happy Wife’s Day to the one who completes me.”<br>
+                “Every love song suddenly makes sense when I think of you, my wife.”<br>
+                “You are the wish I never knew I made but the one that came true anyway.”<br>
+                “My favourite place in the world is by your side. Happy Wife’s Day.”
+        </div>
+
+        <div class="blog-subheading">Wife Day Wishes</div>
+
+        <div class="blog-text">
+        Simple wishes go a long way in making her feel loved. Here are some warm and heartfelt wife day wishes:
+        “Happy Wife’s Day to the woman who makes my life brighter every single day.”<br>
+        “You are not just my wife, you’re my best friend and greatest blessing. Wishing you endless happiness today and always.”<br>
+        “To my partner in love and in life—Happy Wife’s Day. Thank you for being everything I needed and more.”<br>
+        “On Wife’s Day, I want you to know that no words can truly capture my love for you, but I’ll spend my life trying.”<br>
+        “Wishing the most wonderful woman I know a Happy Wife’s Day. You deserve the world and more.”
+        </div>
+
+        <div class="blog-subheading">Short Wife Day Messages</div>
+
+        <div class="blog-text">
+        Sometimes short and sweet is just right. These wife day messages can fit into a text, note, or card:<br><br>
+        “Happy Wife’s Day, my love. You’re my forever.”<br>
+        “To my heart, my soul, my wife—thank you for being you.”<br>
+        “Life is beautiful because you’re in it. Happy Wife’s Day.”<br>
+        “Every day with you feels like a gift. Today is my turn to celebrate you.”<br>
+        “Happy Wife’s Day. You’re the reason my world feels complete.”
+        </div>
+
+        <div class="blog-subheading">Funny Wife Day Quotes</div>
+
+        <div class="blog-text">
+         Not everything has to be serious—sometimes humour says love best.<br><br>
+        “Happy Wife’s Day to the only woman who can boss me around and still get away with it.”<br>
+        “They say marriage is a partnership. I just wish I had more shares in ours.”<br>
+        “Happy Wife’s Day to my better half—let’s be honest, my much better half.”<br>
+        “Behind every successful husband is a very tired wife. Thank you for being mine.”
+        </div>
+
+        <div class="blog-subheading">How To Use These Quotes nad Wishes</div>
+
+        <div class="blog-text">
+        Morning note: Leave a small sticky note on her mirror with a sweet line.<br>
+        Cake: Get a delicious and romantic cake for wife and get the quote or the wish written around the cake.<br><br>
+        Text message: Send her a romantic or funny message while she’s at work.<br>
+        Social media post: Share a favourite picture with one of these quotes as a caption.<br><br>
+        Greeting card: Write a heartfelt wish that she’ll keep and cherish.
+        </div>
+
+        <div class="blog-subheading">Why Wife's Day Matters</div>
+
+        <div class="blog-text">
+        In the rush of everyday life, it’s easy to forget to say the little things—thank you, I love you, 
+        I’m proud of you. Wife’s Day is a gentle nudge to slow down and celebrate the person who makes your 
+        world warmer, steadier, and filled with love. A heartfelt wife day quote or message can make her feel seen, valued, 
+        and cherished.<br><br>
+
+        Wife’s Day isn’t just another date on the calendar, it’s a reminder to celebrate the love, strength, 
+        and companionship of the woman who shares her life with you. Whether you choose a romantic wife day quote, 
+        a heartfelt wife day wish, or a playful message, the thought and sincerity behind your words will mean everything 
+        to her.<br><br>
+
+        So go ahead—pick the lines that speak your heart, and make this Wife’s Day truly unforgettable for her.
+        </div>
+        
+        
+        <div style="text-align:center; margin-top: 25px;">
+                    <button class="blog-close-btn" onclick="hideMore(this)">Close</button>
+                </div>
+        </div>
+</div>
+</div>
+<!-- BLOG ITEM -->
+    <div class="blog-row">
+
+    <!-- LEFT IMAGE CARD -->
+    <div class="blog-card">
+    <div class="blog-card-image">
+        <img src="Blog1.png" alt="Raksha Bandhan">
+    </div>
+
+    <div class="blog-card-content">
+        <p class="blog-card-date">29th July, 2025</p>
+        <h3 class="blog-card-title">
+            Raksha Bandhan Celebration Ideas to Make the Day Truly Memorable
+        </h3>
+    </div>
+</div>
+
+
+    <!-- RIGHT CONTENT CARD -->
+    <div class="blog-content-card">
+        <div class="blog-heading">
+            Raksha Bandhan Celebration Ideas to Make the Day Truly Memorable
+        </div>
+
+        <div class="blog-text">
+            Raksha Bandhan is not just about tying a Rakhi on your brother’s wrist;
+            it’s about cherishing the  special sibling bond you share with them.No matter if you live in 
+            the same house or different cities,celebrating Raksha Bandan deepens your connection.It's an opportunity
+            to slow down and express love to your siblings.<br><br>
+            Why not try something different this year? Whether you are celebrating in person or online, we've compiled a 
+            list of thoughtful Rakhi celebration ideas, including online Rakhi celebration ideas and gifting suggestions
+             to make your Raksha Bandhan special.
+        </div>
+
+        <div class="blog-subheading">Personalised Rakhi and Sweet Delight</div>
+
+        <div class="blog-text">
+            This one is one of the most heartfelt and creative Rakhi ideas. Make a Rakhi by yourself 
+            or customise one you've bought. Pair it with The Dessert House’s 
+            Raksha Bandhan Chocolate Rochers Gift Box or Raksha Bandhan Mithai Confectionery Box 
+            and a thoughtful card. It is a tiny yet kind gesture (and tasty).
+        </div>
+
+    <div class="blog-subheading">Cakes That Say It All</div>
+    <a href="javascript:void(0)" class="read-btn" onclick="showMore(this)">Click to read</a>
+
+
+        <div class="blog-more-content">
+
+            <div class="blog-text">
+        If food is your love language, a special cake is an absolute must-have. Try The Dessert House's Raksha Bandhan Kunafa Cake
+         for a fusion touch Dubai-style, or our Raksha Bandhan Mix Berry Chocolate Cake for those who want a classic with a 
+        fruity punch.<br><br>
+        Too far away? Just order the cake online from our vast menu of delectable cakes and send the love to where
+         they live. It's one of the best online Rakhi celebration ideas for siblings who live away.<br><br>
+        What better way than to dress in comfortable PJs and watch your favourite movies together! 
+        And to go perfectly well with the movie, serve the The Dessert House dessert board made with cupcakes, 
+        pastries, cookies, and don't forget the gift—the Raksha Bandhan Mini Brownies Gift Box. For a more luxurious feel, 
+        consider gifting our Raksha Bandhan Celebration Gift Hamper Box.
+        </div>
+
+        <div class="blog-subheading">Virtual celebrations With a Delicious Touch</div>
+
+        <div class="blog-text">
+        Not together with your sibling this Rakhi? Not a problem. Opt for virtual Rakhi celebration ideas such as a 
+        surprise doorstep delivery of the Rakhi, Raksha Bandhan Premium Gift Hamper Basket, and a cake. Simply buy 
+        cake online from The Dessert House. With a video call, a shared playlist, and dessert in hand, you'll feel 
+        closer in no time.
+        </div>
+
+        <div class="blog-subheading">Perfect Gift Hamper Exchange</div>
+
+        <div class="blog-text">
+        Up your gift-giving game with The Dessert House's limited-edition hampers and boxes.
+         Whether you are going simple or crazy premium, you'll find something perfect:
+        </div>
+
+        <div class="blog-subheading">Gift Bags</div>
+
+        <div class="blog-text">
+        Raksha Bandhan Premium Gift Hamper Bag<br>
+        Raksha Bandhan Luxury Gift Hamper Bag<br>
+        Raksha Bandhan Indulgence Gift Hamper Bag
+        </div>
+
+        <div class="blog-subheading">Gift Boxes</div>
+
+        <div class="blog-text">
+        Raksha Bandhan Celebration Gift Hamper Box<br>
+        Raksha Bandhan Premium Gift Hamper Box<br>
+        Raksha Bandhan Luxury Gift Hamper Box<br>
+        Raksha Bandhan Indulgence Gift Hamper Box
+        </div>
+
+        <div class="blog-subheading">Gift Hamper Baskets</div>
+
+        <div class="blog-text">
+        Raksha Bandhan Luxury Gift Hamper Basket<br>
+        Raksha Bandhan Indulgence Gift Hamper Basket<br><br>
+
+        Each one is personalised to reflect your bond and includes luxury treats such as brownies,<br>
+         chocolates, and gourmet snacks.<br><br>
+
+        Note: Our Raksha Bandhan special products will only be available for a short time, from August 1st to<br>
+         August 11th, 2025. Shop soon to surprise your loved ones with our limited-period festive delights!
+        </div>
+        
+        
+        <div style="text-align:center; margin-top: 25px;">
+                    <button class="blog-close-btn" onclick="hideMore(this)">Close</button>
+                </div>
+        
+</div>
+</div>
+</div>
+<!-- BLOG ITEM -->
+    <div class="blog-row">
+
+    <!-- LEFT IMAGE CARD -->
+    <div class="blog-card">
+    <div class="blog-card-image">
+        <img src="Blog2.png" alt="Raksha Bandhan">
+    </div>
+
+    <div class="blog-card-content">
+        <p class="blog-card-date">29th July, 2025</p>
+        <h3 class="blog-card-title">
+            Happy Wife Day Quotes,Wishes and Messages To Make Her Smile
+        </h3>
+    </div>
+</div>
+
+
+    <!-- RIGHT CONTENT CARD -->
+    <div class="blog-content-card">
+        <div class="blog-heading">
+            Happy Wife Day Quotes,Wishes and Messages To Make Her Smile
+        </div>
+
+        <div class="blog-text">
+            Every love story is unique, but the bond between a husband and wife is something truly timeless. 
+            Wife’s Day is the perfect moment to pause, appreciate, and remind her how much she means to you. 
+            Words have a way of reaching the heart like nothing else, and sometimes a simple line can carry the weight 
+            of a thousand emotions. Whether you’re looking for Happy Wife Day quotes, heartfelt wishes, or short 
+            and sweet messages, here’s a collection to help you put your feelings into words.
+        </div>
+
+        <div class="blog-subheading">Happy Wife Day Quotes</div>
+
+        <div class="blog-text">
+            Here are some thoughtful wife day quotes you can share to express your gratitude and admiration:<br><br>
+            “A wife is not just a partner; she is the heart of the home and the soul of love.”<br>
+            “Behind every happy man is a wife who believed in him even when he doubted himself.”<br>
+            “A good wife brings joy to your life, strength to your struggles, and peace to your soul.”<br>
+            “Marriage isn’t about finding someone you can live with—it’s about finding someone you can’t live without. 
+            That’s my wife.”<br>
+            “A wife’s love is the most beautiful chapter in a man’s story.”
+        </div>
+        <a href="javascript:void(0)" class="read-btn" onclick="showMore(this)">Click to read</a>
+    
+        
+        <div class="blog-subheading">Romantic Wife Day Quotes</div>
+            <div class="blog-more-content">
+
+            <div class="blog-text">
+                If you want to add a little romance to her day, these words say it all:<br>
+                “My wife, my love, my forever—Happy Wife’s Day to the one who completes me.”<br>
+                “Every love song suddenly makes sense when I think of you, my wife.”<br>
+                “You are the wish I never knew I made but the one that came true anyway.”<br>
+                “My favourite place in the world is by your side. Happy Wife’s Day.”
+        </div>
+
+        <div class="blog-subheading">Wife Day Wishes</div>
+
+        <div class="blog-text">
+        Simple wishes go a long way in making her feel loved. Here are some warm and heartfelt wife day wishes:
+        “Happy Wife’s Day to the woman who makes my life brighter every single day.”<br>
+        “You are not just my wife, you’re my best friend and greatest blessing. Wishing you endless happiness today and always.”<br>
+        “To my partner in love and in life—Happy Wife’s Day. Thank you for being everything I needed and more.”<br>
+        “On Wife’s Day, I want you to know that no words can truly capture my love for you, but I’ll spend my life trying.”<br>
+        “Wishing the most wonderful woman I know a Happy Wife’s Day. You deserve the world and more.”
+        </div>
+
+        <div class="blog-subheading">Short Wife Day Messages</div>
+
+        <div class="blog-text">
+        Sometimes short and sweet is just right. These wife day messages can fit into a text, note, or card:<br><br>
+        “Happy Wife’s Day, my love. You’re my forever.”<br>
+        “To my heart, my soul, my wife—thank you for being you.”<br>
+        “Life is beautiful because you’re in it. Happy Wife’s Day.”<br>
+        “Every day with you feels like a gift. Today is my turn to celebrate you.”<br>
+        “Happy Wife’s Day. You’re the reason my world feels complete.”
+        </div>
+
+        <div class="blog-subheading">Funny Wife Day Quotes</div>
+
+        <div class="blog-text">
+         Not everything has to be serious—sometimes humour says love best.<br><br>
+        “Happy Wife’s Day to the only woman who can boss me around and still get away with it.”<br>
+        “They say marriage is a partnership. I just wish I had more shares in ours.”<br>
+        “Happy Wife’s Day to my better half—let’s be honest, my much better half.”<br>
+        “Behind every successful husband is a very tired wife. Thank you for being mine.”
+        </div>
+
+        <div class="blog-subheading">How To Use These Quotes nad Wishes</div>
+
+        <div class="blog-text">
+        Morning note: Leave a small sticky note on her mirror with a sweet line.<br>
+        Cake: Get a delicious and romantic cake for wife and get the quote or the wish written around the cake.<br><br>
+        Text message: Send her a romantic or funny message while she’s at work.<br>
+        Social media post: Share a favourite picture with one of these quotes as a caption.<br><br>
+        Greeting card: Write a heartfelt wish that she’ll keep and cherish.
+        </div>
+
+        <div class="blog-subheading">Why Wife's Day Matters</div>
+
+        <div class="blog-text">
+        In the rush of everyday life, it’s easy to forget to say the little things—thank you, I love you, 
+        I’m proud of you. Wife’s Day is a gentle nudge to slow down and celebrate the person who makes your 
+        world warmer, steadier, and filled with love. A heartfelt wife day quote or message can make her feel seen, valued, 
+        and cherished.<br><br>
+
+        Wife’s Day isn’t just another date on the calendar, it’s a reminder to celebrate the love, strength, 
+        and companionship of the woman who shares her life with you. Whether you choose a romantic wife day quote, 
+        a heartfelt wife day wish, or a playful message, the thought and sincerity behind your words will mean everything 
+        to her.<br><br>
+
+        So go ahead—pick the lines that speak your heart, and make this Wife’s Day truly unforgettable for her.
+        </div>
+        
+        
+        <div style="text-align:center; margin-top: 25px;">
+                    <button class="blog-close-btn" onclick="hideMore(this)">Close</button>
+                </div>
+        </div>
+</div>
+</div>
+
+<!-- QUICK LINKS FOOTER -->
+<footer class="quick-footer">
+
+    <!-- SCALLOP INSIDE FOOTER -->
+    <div class="footer-scallop"></div>
+
+    <!-- TITLE -->
+    <h2 class="quick-title">Quick links</h2>
+
+    <!-- CONTENT -->
+    <div class="quick-container">
+
+        <!-- LOGO -->
+        <div class="quick-col logo-col">
+            <a href="Homepage.html">
+            <img src="logo.png" alt="Dessert Logo" class="logo">
+        </a>
+
+        </div>
+
+        <!-- LINKS 1 -->
+        <div class="quick-col">
+            <p><a href="AboutUs.html">About Us</a></p>
+            <p><a href="AllDesserts.html">Desserts</a></p>
+            <p><a href="Contact.html">Contact</a></p>
+            <p><a href="Blogs.html">Blogs</a></p>
+        </div>
+
+        <!-- LINKS 2 -->
+        <div class="quick-col">
+            <p><a href="FAQ.html">FAQ</a></p>
+            <p><a href="Privacy.html">Privacy Policy</a></p>
+            <p><a href="Trems&Conditions.html">Terms and Conditions</a></p>
+            <p><a href="RefundPolicy.html">Refund Policy</a></p>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="quick-col contact-col">
+            <p><i class="fa-solid fa-phone"></i> +91 987 654 3210</p>
+            <p><i class="fa-solid fa-envelope"></i> Contact@thedesserthouse.in</p>
+            <div class="social">
+                <i class="fa-brands fa-youtube youtube"></i>
+                <i class="fa-brands fa-facebook facebook"></i>
+                <i class="fa-brands fa-instagram instagram"></i>
+            </div>
+        </div>
+
+    </div>
+
+</footer>
+<!-- COPYRIGHT (OUTSIDE FOOTER) -->
+<div class="copyright-bar">
+    © 2024 @thedesserthouse.in
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+
+    <div class="login-modal">
+
+        <!-- CLOSE -->
+        <span class="close-btn" id="closeLogin">&times;</span>
+
+        <h2>Login / Sign Up</h2>
+
+        <input type="email" id="loginInput" placeholder="Enter Email ID">
+
+        <a href="#" class="with-mobile" id="toggleLogin">With Mobile</a>
+       
+        <button class="otp-btn" id="getOtpBtn">
+            Get OTP <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <p class="terms-text">
+            By continuing I agree to The Dessert House’s
+            <strong>Terms and Conditions</strong> and
+            <strong>Privacy Policy</strong>.
+        </p>
+</div>
+</div>
+<script>
+    //open/close modal
+const openBtn = document.getElementById("openLogin");
+const modal = document.getElementById("loginModal");
+const closeBtn = document.getElementById("closeLogin");
+
+// OPEN MODAL
+openBtn.onclick = () => {
+    modal.style.display = "flex";
+};
+
+// CLOSE MODAL (X button)
+closeBtn.onclick = () => {
+    modal.style.display = "none";
+};
+
+// CLOSE MODAL (click outside)
+modal.onclick = (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+};
+//Toggle
+const toggleLink = document.getElementById("toggleLogin");
+const loginInput = document.getElementById("loginInput");
+
+let isEmail = true;
+
+toggleLink.onclick = (e) => {
+    e.preventDefault();
+
+    if (isEmail) {
+        loginInput.type = "tel";
+        loginInput.placeholder = "Enter Mobile Number";
+        toggleLink.textContent = "With Email";
+    } else {
+        loginInput.type = "email";
+        loginInput.placeholder = "Enter Email ID";
+        toggleLink.textContent = "With Mobile";
+    }
+
+    isEmail = !isEmail;
+};
+//alert message
+const otpBtn = document.getElementById("getOtpBtn");
+
+otpBtn.onclick = () => {
+    alert("OTP sent successfully");
+
+    // Redirect after alert
+    window.location.href = "Homepage.html";
+};
+
+const dessertToggle = document.getElementById("dessertToggle");
+const dropdownMenu = document.querySelector(".dropdown-menu");
+
+dessertToggle.onclick = (e) => {
+    e.preventDefault();
+    dropdownMenu.style.display =
+        dropdownMenu.style.display === "block" ? "none" : "block";
+};
+
+// Close dropdown when clicking outside
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".dropdown")) {
+        dropdownMenu.style.display = "none";
+    }
+});
+function showMore(btn) {
+    const moreContent = btn.nextElementSibling;
+    moreContent.style.display = "block";
+    btn.style.display = "none";
+}
+
+function hideMore(btn) {
+    const blogContent = btn.closest(".blog-more-content");
+    blogContent.style.display = "none";
+    blogContent.previousElementSibling.style.display = "inline-block";
+}
+// SEARCH DROPDOWN
+const searchInput = document.getElementById("searchInput");
+const searchDropdown = document.getElementById("searchDropdown");
+
+// Show dropdown when input is clicked/focused
+searchInput.addEventListener("focus", () => {
+    searchDropdown.style.display = "flex";  // show
+});
+
+// Hide dropdown when clicking outside the search box
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-box")) {
+        searchDropdown.style.display = "none"; // hide
+    }
+});
+</script>
+</body>
+</html>
