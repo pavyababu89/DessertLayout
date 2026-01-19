@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inria Sans', sans-serif;
+}
+
+body {
+    background: #fff;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    background: #FFCCCC;
+    padding: 18px 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);;
+}
+
+/* LEFT */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+.brand-name {
+    font-size: 26px;
+    font-weight: 700;
+    color: #6b0015;
+}
+
+/* CENTER MENU */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+    margin-top: 25px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #710125;
+}
+
+/* RIGHT */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* SEARCH */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 30px;
+    padding: 6px 14px;
+    width: 220px;
+    border: 2px solid #710125;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 15px;
+}
+
+.search-box i {
+    color: #6b0015;
+    cursor: pointer;
+}
+/* SEARCH DROPDOWN */
+.search-dropdown {
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    background: #fff0f0;
+    border: 2px solid #710125;
+    border-radius: 10px;
+    padding: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+    z-index: 1000;
+}
+
+.search-dropdown a {
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #710125;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #710125;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.search-dropdown a:hover {
+    background: #710125;
+    color: #fff;
+}
+
+
+/* BUTTON */
+.login-btn {
+    background: #fff;
+    border: 2px solid #6b0015;
+    color: #6b0015;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+.login-btn:hover {
+    background: #6b0015;
+    color: #fff;
+} 
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+/* DROPDOWN BOX */
+.dropdown-menu {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background: #fff0f0;
+    border: 2px solid #6b0015;
+    width: 200px;
+    list-style: none;
+    padding: 12px 0;
+    display: none;
+    z-index: 999;
+}
+
+/* ITEMS */
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: #6b0015;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* HOVER EFFECT */
+/* Dropdown hover – change TEXT COLOR ONLY */
+.dropdown-menu li:hover > a {
+    color: #D72D52 !important;
+} 
+
+/* ABOUT US */
+.about-section {
+  padding: 40px 40px;
+  background: #ffffff;
+  text-align: center;
+  font-family: 'Inria Sans', sans-serif;
+}
+
+.about-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #6b0015;
+  margin-bottom: 30px;
+}
+
+.about-subtitle {
+  margin-top: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #8a0020;
+  margin-bottom: 20px;
+}
+
+.about-desc {
+  margin-top: 10px;
+  font-size: 19px;
+  color: black;
+  font-weight: 600;
+}
+
+.about-content {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-col {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.about-item h4 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #6b0015;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.about-item p {
+  font-size: 19px;
+  line-height: 1.4;
+  color: black;
+  font-weight: 600;
+}
+
+.about-center img {
+  width: 100%;
+  max-width:500px;
+}
+
+.about-footer-text {
+  max-width: 900px;
+  margin: 50px auto;
+  font-size: 19px;
+  line-height: 1.8;
+  color: black;
+  font-weight: 600;
+}
+ .about-stats {
+    margin: 40px auto 0;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-content: center;
+}
+
+
+.stat-card {
+  background: #d62d4a;
+  color: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  width:80%;
+  height: 100px;
+}
+
+.stat-card i {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.stat-card h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+/* Change background color of ONLY the 2nd stat card */
+.about-stats .stat-card:nth-child(2) {
+    background: #ffffff;
+    color: #d62d4a;
+    border: 2px solid #d62d4a;
+}
+.about-stats .stat-card:nth-child(3) h3 {
+    white-space: nowrap;
+}
+/* BELIEF SECTION */
+.belief-section {
+  background: #F8EBEB;
+  padding: 60px 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+ .belief-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.4fr 0.7fr; /* text wider */
+    align-items: center;
+    gap: 40px;
+    height: 500px;
+}
+
+
+.belief-text h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #d62d4a;
+  margin-bottom: 20px;
+}
+
+.belief-text p {
+  font-size: 19px;
+  line-height: 1.8;
+  color: black;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.belief-image img {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin-left: auto;
+}
+
+/* SCALLOPED BOTTOM */
+.belief-scallop {
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    background:
+        radial-gradient(
+            circle at 60px 80px,   /* move circle origin DOWN */
+            #d62d4a 60px,
+            transparent 61px
+        ) repeat-x;
+
+    background-size: 120px 80px;
+}
+.belief-text {
+    padding-right: 20px;
+     transform: translateY(-20px);
+}
+
+/* QUICK LINKS FOOTER */
+/* FOOTER BASE */
+.quick-footer {
+    background: #ffd6d6;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+/* SCALLOP STRIP INSIDE FOOTER */
+.footer-scallop {
+    width: 100%;
+    height: 80px;
+    background:
+        radial-gradient(
+            circle at 60px 80px,
+            #ffd6d6 60px,
+            transparent 61px
+        ) repeat-x;
+    background-size: 120px 80px;
+}
+
+/* TITLE */
+.quick-title {
+    margin-top: 5px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #6b0015;
+    display: inline-block;
+    position: relative;
+}
+
+.quick-title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -6px;
+    width: 80%;
+    height: 3px;
+    background: #6b0015;
+}
+
+/* GRID */
+.quick-container {
+    max-width: 1200px;
+    margin: 50px auto 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-decoration: none;
+}
+
+/* COLUMNS */
+.quick-col {
+    padding: 0 30px;
+    text-align: left;
+    font-size: 20px;
+    color: #6b0015;
+    position: relative;
+    font-weight: 600;
+    
+}
+.quick-footer a {
+    color: #6b0015;      /* same as your footer text */
+    text-decoration: none; /* remove underline */
+    font-weight: 600;     /* optional, same as text */
+}
+
+/* VERTICAL LINES */
+.quick-col:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 2px;
+    background: #9a4b5a;
+}
+
+/* LOGO */
+.logo-col img {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+/* CONTACT */
+.contact-col p {
+    margin-bottom: 10px;
+}
+
+.social i {
+    font-size: 22px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+/* BRAND COLORS */
+.youtube {
+    color: #FF0000;
+}
+
+.facebook {
+    color: #1877F2;
+}
+
+.instagram {
+    color: #E4405F;
+}
+
+/* COPYRIGHT BAR */
+.copyright-bar {
+    text-align: center;
+    padding: 12px 0;
+    font-size: 16px;
+    color: black;
+    background: #ffffff;
+    font-weight: 600;
+}
+
+/* MODAL OVERLAY */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* MODAL BOX */
+.login-modal {
+    background: #fff;
+    width: 360px;
+    padding: 30px 25px;
+    border-radius: 16px;
+    position: relative;
+    font-family: 'Inria Sans', sans-serif;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    background: #e23c5b;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* TITLE */
+.login-modal h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+/* INPUT */
+.login-modal input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: #f1f1f1;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* MOBILE LINK */
+.with-mobile {
+    color: #0047ff;
+    font-size: 16px;
+    float: right;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+/* OTP BUTTON */
+.otp-btn {
+    width: 100%;
+    background: #ffd1d1;
+    border: none;
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+    color: #6b0015;
+    font-weight: 600;
+}
+
+.otp-btn i {
+    margin-left: 8px;
+}
+
+/* TERMS */
+.terms-text {
+    font-size: 14px;
+    margin-top: 20px;
+    color: #000;
+    line-height: 1.5;
+}
+@media (max-width: 1024px) {
+
+    /* NAVBAR */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 18px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .nav-right {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .search-box {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .logo {
+        width: 160px;
+    }
+
+    /* ABOUT SECTION */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .about-col {
+        gap: 40px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-center img {
+        max-width: 380px;
+        margin: auto;
+    }
+
+    .about-item p,
+    .about-desc,
+    .about-footer-text {
+        font-size: 17px;
+    }
+
+    /* STATS */
+    .about-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .stat-card {
+        width: 100%;
+        margin: auto;
+    }
+
+    /* BELIEF SECTION */
+    .belief-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        text-align: center;
+    }
+
+    .belief-text {
+        padding-right: 0;
+        transform: none;
+    }
+
+    .belief-text h3 {
+        font-size: 20px;
+    }
+
+    .belief-text p {
+        font-size: 17px;
+    }
+
+    .belief-image img {
+        max-width: 380px;
+        margin: 25px auto 0;
+    }
+
+    /* FOOTER */
+    .quick-container {
+        grid-template-columns: 1fr;
+        row-gap: 35px;
+        text-align: center;
+    }
+
+    .quick-col {
+        padding: 0;
+    }
+
+    .quick-col:not(:last-child)::after {
+        display: none;
+    }
+
+    .logo-col img {
+        margin: auto;
+    }
+
+    /* MODAL */
+    .login-modal {
+        width: 90%;
+    }
+
+}
+</style>
+</head>
+<body>
+    <!-- NAV BAR -->
+    <nav class="navbar">
+
+    <!-- Left: Logo -->
+    <div class="nav-left">
+        <a href="Homepage.html">
+        <img src="logo.png" alt="Dessert Logo" class="logo">
+        </a>
+    </div>
+
+    <!-- Center: Menu -->
+    <ul class="nav-menu">
+        <li><a href="AboutUs.html">About Us</a></li>
+        <li class="dropdown">
+        <a href="#" id="dessertToggle">Desserts ▾</a>
+
+    <ul class="dropdown-menu">
+        <li><a href="AllDesserts.html">All Desserts</a></li>
+        <li><a href="Pastries.html">Pastry</a></li>
+        <li><a href="Brownies.html">Brownies</a></li>
+        <li><a href="Tarts.html">Tart</a></li>
+        <li><a href="Teacakes.html">Tea Cake</a></li>
+        <li><a href="Cupcakes.html">Cup Cake</a></li>
+        <li><a href="Jarcakes.html">Jar Cake</a></li>
+        <li><a href="Combos.html">Combos</a></li>
+    </ul>
+</li>
+        <li><a href="Contact.html">Contact</a></li>
+    </ul>
+
+    <!-- Right: Search + Button -->
+    <div class="nav-right">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="search-dropdown" id="searchDropdown">
+            <a href="Brownies.html">Brownies</a>
+            <a href="Pastries.html">Pastry</a>
+            <a href="Cupcakes.html">Cup cake</a>
+            <a href="Tarts.html">Tart</a>
+            <a href="Teacakes.html">Tea cake</a>
+            <a href="Jarcakes.html">Jar cake</a>
+    </div>
+        </div>
+
+        <button class="login-btn" id="openLogin">Log In / Sign Up</button>
+
+    </div>
+</nav>
+
+<!-- ABOUT US SECTION -->
+ <section class="about-section">
+  <h2 class="about-title">About Us</h2>
+  <p class="about-subtitle">Food of The Gods, Freshly Baked!</p>
+  <p class="about-desc">
+    Since 2024, we've been serving our guests the best quality treats,<br>
+    traditionally made and presented with care.
+  </p>
+
+  <div class="about-content">
+
+    <!-- LEFT -->
+    <div class="about-col">
+      <div class="about-item">
+        <h4>AUTHENTIC RECIPES</h4>
+        <p>
+          Our products are based on<br> traditional home-style recipes<br>
+          using fresh ingredients.
+        </p>
+      </div>
+
+      <div class="about-item">
+        <h4>BAKED WITH LOVE</h4>
+        <p>
+          Our passion for baking is poured into<br> every recipe,
+          serving smiles on a<br> plate everyday.
+        </p>
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="about-center">
+      <img src="Aboutus.avif" alt="Dessert House Illustration">
+    </div>
+
+    <!-- RIGHT -->
+    <div class="about-col">
+      <div class="about-item">
+        <h4>COMMITTED TO QUALITY</h4>
+        <p>
+          From our ingredients to our<br> kitchen operations and guest services,<br>
+          we always prioritize quality.
+        </p>
+      </div>
+
+      <div class="about-item">
+        <h4>HONESTLY PRICED</h4>
+        <p>
+          We constantly strive to offer the best<br> products
+          at the right prices.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="about-footer-text">
+    "The dessert house" would be a dedicated establishment for sweet foods and indulgent
+    range of offerings that include brownies, cakes, desserts, chocolates,
+    breads, and savouries.
+    <br><br>
+    From our humble beginnings in 2024, when the first The dessert house pastry
+    store opened its doors at the place of Karaikudi, Tamil Nadu, India, we've
+    grown to become a Pan-India chain of patisseries with stores in over 10 cities.
+    <br><br>
+    Our mission is to spread happiness by serving smiles on a plate,
+    and this journey continues as we open The dessert house patisseries across the country.
+  </p>
+
+  <!-- STATS -->
+  <div class="about-stats">
+    <div class="stat-card">
+      <i class="fa-solid fa-cake-candles"></i>
+      <h3>Founded in 2024</h3>
+    </div>
+
+    <div class="stat-card">
+      <i class="fa-solid fa-location-dot"></i>
+      <h3>10 Cities</h3>
+    </div>
+
+    <div class="stat-card">
+      <i class="fa-solid fa-gift"></i>
+      <h3>20+ Unique Desserts</h3>
+    </div>
+  </div>
+</section>
+
+<section class="belief-section">
+
+  <div class="belief-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="belief-text">
+      <h3>Remember the days when you believed anything was possible?</h3>
+
+      <p>
+        When dreams felt like they were within reach? We want to bring that
+        sense of wonder back to your life.
+      </p>
+
+      <p>
+        With every cake we create, we aim to spark joy and remind you that
+        dreams do come true.
+      </p>
+
+      <p>
+        At the heart of our journey is constant innovation. Our in-house R & D
+        centre helps us discover new flavours, reimagine classic desserts,
+        and craft experiences that delight with every bite.
+      </p>
+
+      <p>
+        This commitment to creativity and quality has not only won hearts
+        but also earned us industry recognition, including winning the
+        Swiggy Award for Best Dessert Brand — a milestone that sweetly
+        affirms our mission.
+      </p>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="belief-image">
+      <img src="banner.jpg" alt="Dessert Glass">
+    </div>
+
+  </div>
+
+  <!-- SCALLOP BOTTOM -->
+  <div class="belief-scallop"></div>
+
+</section>
+
+<!-- QUICK LINKS FOOTER -->
+<footer class="quick-footer">
+
+    <!-- SCALLOP INSIDE FOOTER -->
+    <div class="footer-scallop"></div>
+
+    <!-- TITLE -->
+    <h2 class="quick-title">Quick links</h2>
+
+    <!-- CONTENT -->
+    <div class="quick-container">
+
+        <!-- LOGO -->
+        <div class="quick-col logo-col">
+            <a href="Homepage.html">
+            <img src="logo.png" alt="Dessert Logo" class="logo">
+        </a>
+
+        </div>
+
+        <!-- LINKS 1 -->
+        <div class="quick-col">
+            <p><a href="AboutUs.html">About Us</a></p>
+            <p><a href="AllDesserts.html">Desserts</a></p>
+            <p><a href="Contact.html">Contact</a></p>
+            <p><a href="Blogs.html">Blogs</a></p>
+        </div>
+
+        <!-- LINKS 2 -->
+        <div class="quick-col">
+            <p><a href="FAQ.html">FAQ</a></p>
+            <p><a href="Privacy.html">Privacy Policy</a></p>
+            <p><a href="Trems&Conditions.html">Terms and Conditions</a></p>
+            <p><a href="RefundPolicy.html">Refund Policy</a></p>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="quick-col contact-col">
+            <p><i class="fa-solid fa-phone"></i> +91 987 654 3210</p>
+            <p><i class="fa-solid fa-envelope"></i> Contact@thedesserthouse.in</p>
+            <div class="social">
+                <i class="fa-brands fa-youtube youtube"></i>
+                <i class="fa-brands fa-facebook facebook"></i>
+                <i class="fa-brands fa-instagram instagram"></i>
+            </div>
+        </div>
+
+    </div>
+
+</footer>
+<!-- COPYRIGHT (OUTSIDE FOOTER) -->
+<div class="copyright-bar">
+    © 2024 @thedesserthouse.in
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+
+    <div class="login-modal">
+
+        <!-- CLOSE -->
+        <span class="close-btn" id="closeLogin">&times;</span>
+
+        <h2>Login / Sign Up</h2>
+
+        <input type="email" id="loginInput" placeholder="Enter Email ID">
+
+        <a href="#" class="with-mobile" id="toggleLogin">With Mobile</a>
+       
+        <button class="otp-btn" id="getOtpBtn">
+            Get OTP <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <p class="terms-text">
+            By continuing I agree to The Dessert House’s
+            <strong>Terms and Conditions</strong> and
+            <strong>Privacy Policy</strong>.
+        </p>
+</div>
+</div>
+<script>
+    //open/close modal
+const openBtn = document.getElementById("openLogin");
+const modal = document.getElementById("loginModal");
+const closeBtn = document.getElementById("closeLogin");
+
+// OPEN MODAL
+openBtn.onclick = () => {
+    modal.style.display = "flex";
+};
+
+// CLOSE MODAL (X button)
+closeBtn.onclick = () => {
+    modal.style.display = "none";
+};
+
+// CLOSE MODAL (click outside)
+modal.onclick = (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+};
+//Toggle
+const toggleLink = document.getElementById("toggleLogin");
+const loginInput = document.getElementById("loginInput");
+
+let isEmail = true;
+
+toggleLink.onclick = (e) => {
+    e.preventDefault();
+
+    if (isEmail) {
+        loginInput.type = "tel";
+        loginInput.placeholder = "Enter Mobile Number";
+        toggleLink.textContent = "With Email";
+    } else {
+        loginInput.type = "email";
+        loginInput.placeholder = "Enter Email ID";
+        toggleLink.textContent = "With Mobile";
+    }
+
+    isEmail = !isEmail;
+};
+//alert message
+const otpBtn = document.getElementById("getOtpBtn");
+
+otpBtn.onclick = () => {
+    alert("OTP sent successfully");
+
+    // Redirect after alert
+    window.location.href = "Homepage.html";
+};
+
+const dessertToggle = document.getElementById("dessertToggle");
+const dropdownMenu = document.querySelector(".dropdown-menu");
+
+dessertToggle.onclick = (e) => {
+    e.preventDefault();
+    dropdownMenu.style.display =
+        dropdownMenu.style.display === "block" ? "none" : "block";
+};
+
+// Close dropdown when clicking outside
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".dropdown")) {
+        dropdownMenu.style.display = "none";
+    }
+});
+// SEARCH DROPDOWN
+const searchInput = document.getElementById("searchInput");
+const searchDropdown = document.getElementById("searchDropdown");
+
+// Show dropdown when input is clicked/focused
+searchInput.addEventListener("focus", () => {
+    searchDropdown.style.display = "flex";  // show
+});
+
+// Hide dropdown when clicking outside the search box
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-box")) {
+        searchDropdown.style.display = "none"; // hide
+    }
+});
+
+
+</script>
+</body>
+</html>
