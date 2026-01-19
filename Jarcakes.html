@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jar Cakes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inria Sans', sans-serif;
+}
+
+body {
+    background: #fff;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    background: #FFCCCC;
+    padding: 18px 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);;
+}
+
+/* LEFT */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+.brand-name {
+    font-size: 26px;
+    font-weight: 700;
+    color: #6b0015;
+}
+
+/* CENTER MENU */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+    margin-top: 25px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #710125;
+}
+
+/* RIGHT */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* SEARCH */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 30px;
+    padding: 6px 14px;
+    width: 220px;
+    border: 2px solid #710125;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 15px;
+}
+
+.search-box i {
+    color: #6b0015;
+    cursor: pointer;
+}
+/* SEARCH DROPDOWN */
+.search-dropdown {
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    background: #fff0f0;
+    border: 2px solid #710125;
+    border-radius: 10px;
+    padding: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+    z-index: 1000;
+}
+
+.search-dropdown a {
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #710125;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #710125;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.search-dropdown a:hover {
+    background: #710125;
+    color: #fff;
+}
+
+
+/* BUTTON */
+.login-btn {
+    background: #fff;
+    border: 2px solid #6b0015;
+    color: #6b0015;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
+
+}
+
+.login-btn:hover {
+    background: #6b0015;
+    color: #fff;
+} 
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+/* DROPDOWN BOX */
+.dropdown-menu {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background: #fff0f0;
+    border: 2px solid #6b0015;
+    width: 200px;
+    list-style: none;
+    padding: 12px 0;
+    display: none;
+    z-index: 999;
+}
+
+/* ITEMS */
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: #6b0015;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* HOVER EFFECT */
+/* Dropdown hover – change TEXT COLOR ONLY */
+.dropdown-menu li:hover > a {
+    color: #D72D52 !important;
+} 
+
+/* ALL DESSERTS */
+.all-desserts-section {
+  padding: 50px 30px;
+  background: #fff;
+}
+
+.desserts-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #6b0015;
+  margin-bottom: 25px;
+}
+
+/* GRID */
+.desserts-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+}
+
+/* CARD */
+.dessert-card {
+  background: #F8EBEB;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  min-height: 430px;
+  width: 300px;
+}
+
+/* IMAGE */
+.dessert-img {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.dessert-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+}
+
+/* TEXT */
+.dessert-card h4 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #710125;
+  margin: 10px 0 4px;
+  text-align: justify;
+}
+
+.dessert-card p {
+  font-size: 20px;
+  color: black;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* BUTTON */
+.order-btn-small {
+  display: inline-block;
+  padding: 10px 22px;
+  font-size: 20px;
+  background: #F06A86;
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  border:2px solid black;
+}
+
+.order-btn-small:hover {
+  background: #b82440;
+}
+
+/* DEFAULT IMAGE */
+.img-default {
+  opacity: 1;
+}
+
+/* HOVER IMAGE */
+.img-hover {
+  opacity: 0;
+}
+
+/* HOVER EFFECT */
+.dessert-card:hover .img-default {
+  opacity: 0;
+}
+
+.dessert-card:hover .img-hover {
+  opacity: 1;
+}
+
+/* FOOTER BASE */
+.quick-footer {
+    background: #ffd6d6;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+/* SCALLOP STRIP INSIDE FOOTER */
+.footer-scallop {
+    width: 100%;
+    height: 80px;
+    background:
+        radial-gradient(
+            circle at 60px 80px,
+            #ffd6d6 60px,
+            transparent 61px
+        ) repeat-x;
+    background-size: 120px 80px;
+}
+
+/* TITLE */
+.quick-title {
+    margin-top: 5px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #6b0015;
+    display: inline-block;
+    position: relative;
+}
+
+.quick-title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -6px;
+    width: 80%;
+    height: 3px;
+    background: #6b0015;
+}
+
+/* GRID */
+.quick-container {
+    max-width: 1200px;
+    margin: 50px auto 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* COLUMNS */
+.quick-col {
+    padding: 0 30px;
+    text-align: left;
+    font-size: 20px;
+    color: #6b0015;
+    position: relative;
+    font-weight: 600;
+}
+.quick-footer a {
+    color: #6b0015;      /* same as your footer text */
+    text-decoration: none; /* remove underline */
+    font-weight: 600;     /* optional, same as text */
+}
+
+/* VERTICAL LINES */
+.quick-col:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 2px;
+    background: #9a4b5a;
+}
+
+/* LOGO */
+.logo-col img {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+/* CONTACT */
+.contact-col p {
+    margin-bottom: 10px;
+}
+
+.social i {
+    font-size: 22px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+/* BRAND COLORS */
+.youtube {
+    color: #FF0000;
+}
+
+.facebook {
+    color: #1877F2;
+}
+
+.instagram {
+    color: #E4405F;
+}
+
+/* COPYRIGHT BAR */
+.copyright-bar {
+    text-align: center;
+    padding: 12px 0;
+    font-size: 16px;
+    color: black;
+    background: #ffffff;
+    font-weight: 600;
+}
+
+/* MODAL OVERLAY */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* MODAL BOX */
+.login-modal {
+    background: #fff;
+    width: 360px;
+    padding: 30px 25px;
+    border-radius: 16px;
+    position: relative;
+    font-family: 'Inria Sans', sans-serif;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    background: #e23c5b;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* TITLE */
+.login-modal h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+/* INPUT */
+.login-modal input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: #f1f1f1;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* MOBILE LINK */
+.with-mobile {
+    color: #0047ff;
+    font-size: 16px;
+    float: right;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+/* OTP BUTTON */
+.otp-btn {
+    width: 100%;
+    background: #ffd1d1;
+    border: none;
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+    color: #6b0015;
+    font-weight: 600;
+}
+
+.otp-btn i {
+    margin-left: 8px;
+}
+
+/* TERMS */
+.terms-text {
+    font-size: 14px;
+    margin-top: 20px;
+    color: #000;
+    line-height: 1.5;
+}
+/* ===============================
+   TABLET + MOBILE (≤1024px)
+================================ */
+@media (max-width: 1024px) {
+
+  /* NAVBAR */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 15px;
+  }
+
+  .logo {
+    width: 150px;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    align-items: center;
+  }
+
+  .nav-menu a {
+    font-size: 18px;
+  }
+
+  .nav-right {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .search-box {
+    width: 90%;
+    max-width: 320px;
+  }
+
+  /* DESSERT SECTION */
+  .all-desserts-section {
+    padding: 40px 20px;
+  }
+
+  .desserts-title {
+    font-size: 24px;
+  }
+
+  /* GRID → RESPONSIVE */
+  .desserts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    justify-items: center;
+  }
+
+  /* CARD */
+  .dessert-card {
+    width: 100%;
+    max-width: 320px;
+    min-height: auto;
+  }
+
+  .dessert-img {
+    height: 240px;
+  }
+
+  .dessert-card h4 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .dessert-card p {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .order-btn-small {
+    font-size: 18px;
+    padding: 8px 18px;
+  }
+
+  /* DISABLE HOVER IMAGE ON TOUCH */
+  .dessert-card:hover .img-default {
+    opacity: 1;
+  }
+
+  .dessert-card:hover .img-hover {
+    opacity: 0;
+  }
+
+  /* FOOTER */
+  .quick-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .quick-col {
+    padding: 0;
+    font-size: 18px;
+  }
+
+  .quick-col::after {
+    display: none;
+  }
+
+  .logo-col img {
+    width: 150px;
+    margin: auto;
+  }
+
+  /* MODAL */
+  .login-modal {
+    width: 90%;
+    max-width: 360px;
+  }
+
+  /* COPYRIGHT */
+  .copyright-bar {
+    font-size: 14px;
+  }
+}
+
+</style>
+</head>
+<body>
+    <!-- NAV BAR -->
+    <nav class="navbar">
+
+    <!-- Left: Logo -->
+    <div class="nav-left">
+        <a href="Homepage.html">
+        <img src="logo.png" alt="Dessert Logo" class="logo">
+        </a>
+    </div>
+
+    <!-- Center: Menu -->
+    <ul class="nav-menu">
+        <li><a href="AboutUs.html">About Us</a></li>
+        <li class="dropdown">
+        <a href="#" id="dessertToggle">Desserts ▾</a>
+
+    <ul class="dropdown-menu">
+        <li><a href="AllDesserts.html">All Desserts</a></li>
+        <li><a href="Pastries.html">Pastry</a></li>
+        <li><a href="Brownies.html">Brownies</a></li>
+        <li><a href="Tarts.html">Tart</a></li>
+        <li><a href="Teacakes.html">Tea Cake</a></li>
+        <li><a href="Cupcakes.html">Cup Cake</a></li>
+        <li><a href="Jarcakes.html">Jar Cake</a></li>
+        <li><a href="Combos.html">Combos</a></li>
+    </ul>
+</li>
+        <li><a href="Contact.html">Contact</a></li>
+    </ul>
+
+    <!-- Right: Search + Button -->
+    <div class="nav-right">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="search-dropdown" id="searchDropdown">
+            <a href="Brownies.html">Brownies</a>
+            <a href="Pastries.html">Pastry</a>
+            <a href="Cupcakes.html">Cup cake</a>
+            <a href="Tarts.html">Tart</a>
+            <a href="Teacakes.html">Tea cake</a>
+            <a href="Jarcakes.html">Jar cake</a>
+        </div>
+        </div>
+
+        <button class="login-btn" id="openLogin">Log In / Sign Up</button>
+
+    </div>
+</nav>
+
+<!-- BROWNIES -->
+ <section class="all-desserts-section">
+
+  <h2 class="desserts-title">Jar Cakes</h2>
+
+  <div class="desserts-grid">
+
+    <!-- CARD-ROW1 -->
+    <div class="dessert-card">
+        <div class="dessert-img">
+            <img src="Jarcakes.png" class="img-default" alt="">
+            <img src="Jarcakes2.png" class="img-hover" alt="">
+        </div>
+
+        <h4>Oreo Single Jar Cake</h4>
+        <p>Rs. 149/-</p>
+        <a href="Orderonline.html" class="order-btn-small">Order Online</a>
+        </div>
+        
+    <div class="dessert-card">
+        <div class="dessert-img">
+            <img src="FruitFront.png" class="img-default" alt="">
+            <img src="FruitBack.png" class="img-hover" alt="">
+        </div>
+
+        <h4>Fruit Single Jar Cake</h4>
+        <p>Rs. 149/-</p>
+        <a href="Orderonline.html" class="order-btn-small">Order Online</a>
+    </div>
+
+    <div class="dessert-card">
+        <div class="dessert-img">
+            <img src="RedVelevet1.png" class="img-default" alt="">
+            <img src="Redvelvet2.png" class="img-hover" alt="">
+        </div>
+
+        <h4>Red Velvet Single Jar Cake</h4>
+        <p>Rs. 149/-</p>
+        <a href="Orderonline.html" class="order-btn-small">Order Online</a>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="dessert-card">
+        <div class="dessert-img">
+            <img src="Jarcakes.png" class="img-default" alt="">
+            <img src="Jarcakes2.png" class="img-hover" alt="">
+        </div>
+
+        <h4>Oreo Single Jar Cake</h4>
+        <p>Rs. 149/-</p>
+        <a href="Orderonline.html" class="order-btn-small">Order Online</a>
+        </div>
+        
+    <div class="dessert-card">
+        <div class="dessert-img">
+            <img src="FruitFront.png" class="img-default" alt="">
+            <img src="FruitBack.png" class="img-hover" alt="">
+        </div>
+
+        <h4>Fruit Single Jar Cake</h4>
+        <p>Rs. 149/-</p>
+        <a href="Orderonline.html" class="order-btn-small">Order Online</a>
+    </div>
+
+    <div class="dessert-card">
+        <div class="dessert-img">
+            <img src="RedVelevet1.png" class="img-default" alt="">
+            <img src="Redvelvet2.png" class="img-hover" alt="">
+        </div>
+
+        <h4>Red Velvet Single Jar Cake</h4>
+        <p>Rs. 149/-</p>
+        <a href="Orderonline.html" class="order-btn-small">Order Online</a>
+    </div>
+
+</div>
+</section>
+
+<!-- QUICK LINKS FOOTER -->
+<footer class="quick-footer">
+
+    <!-- SCALLOP INSIDE FOOTER -->
+    <div class="footer-scallop"></div>
+
+    <!-- TITLE -->
+    <h2 class="quick-title">Quick links</h2>
+
+    <!-- CONTENT -->
+    <div class="quick-container">
+
+        <!-- LOGO -->
+        <div class="quick-col logo-col">
+            <a href="Homepage.html">
+            <img src="logo.png" alt="Dessert Logo" class="logo">
+        </a>
+
+        </div>
+
+        <!-- LINKS 1 -->
+        <div class="quick-col">
+            <p><a href="AboutUs.html">About Us</a></p>
+            <p><a href="AllDesserts.html">Desserts</a></p>
+            <p><a href="Contact.html">Contact</a></p>
+            <p><a href="Blogs.html">Blogs</a></p>
+        </div>
+
+        <!-- LINKS 2 -->
+        <div class="quick-col">
+            <p><a href="FAQ.html">FAQ</a></p>
+            <p><a href="Privacy.html">Privacy Policy</a></p>
+            <p><a href="Trems&Conditions.html">Terms and Conditions</a></p>
+            <p><a href="RefundPolicy.html">Refund Policy</a></p>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="quick-col contact-col">
+            <p><i class="fa-solid fa-phone"></i> +91 987 654 3210</p>
+            <p><i class="fa-solid fa-envelope"></i> Contact@thedesserthouse.in</p>
+            <div class="social">
+                <i class="fa-brands fa-youtube youtube"></i>
+                <i class="fa-brands fa-facebook facebook"></i>
+                <i class="fa-brands fa-instagram instagram"></i>
+            </div>
+        </div>
+
+    </div>
+
+</footer>
+<!-- COPYRIGHT (OUTSIDE FOOTER) -->
+<div class="copyright-bar">
+    © 2024 @thedesserthouse.in
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+
+    <div class="login-modal">
+
+        <!-- CLOSE -->
+        <span class="close-btn" id="closeLogin">&times;</span>
+
+        <h2>Login / Sign Up</h2>
+
+        <input type="email" id="loginInput" placeholder="Enter Email ID">
+
+        <a href="#" class="with-mobile" id="toggleLogin">With Mobile</a>
+       
+        <button class="otp-btn" id="getOtpBtn">
+            Get OTP <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <p class="terms-text">
+            By continuing I agree to The Dessert House’s
+            <strong>Terms and Conditions</strong> and
+            <strong>Privacy Policy</strong>.
+        </p>
+</div>
+</div>
+<script>
+    //open/close modal
+const openBtn = document.getElementById("openLogin");
+const modal = document.getElementById("loginModal");
+const closeBtn = document.getElementById("closeLogin");
+
+// OPEN MODAL
+openBtn.onclick = () => {
+    modal.style.display = "flex";
+};
+
+// CLOSE MODAL (X button)
+closeBtn.onclick = () => {
+    modal.style.display = "none";
+};
+
+// CLOSE MODAL (click outside)
+modal.onclick = (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+};
+//Toggle
+const toggleLink = document.getElementById("toggleLogin");
+const loginInput = document.getElementById("loginInput");
+
+let isEmail = true;
+
+toggleLink.onclick = (e) => {
+    e.preventDefault();
+
+    if (isEmail) {
+        loginInput.type = "tel";
+        loginInput.placeholder = "Enter Mobile Number";
+        toggleLink.textContent = "With Email";
+    } else {
+        loginInput.type = "email";
+        loginInput.placeholder = "Enter Email ID";
+        toggleLink.textContent = "With Mobile";
+    }
+
+    isEmail = !isEmail;
+};
+//alert message
+const otpBtn = document.getElementById("getOtpBtn");
+
+otpBtn.onclick = () => {
+    alert("OTP sent successfully");
+
+    // Redirect after alert
+    window.location.href = "Homepage.html";
+};
+
+const dessertToggle = document.getElementById("dessertToggle");
+const dropdownMenu = document.querySelector(".dropdown-menu");
+
+dessertToggle.onclick = (e) => {
+    e.preventDefault();
+    dropdownMenu.style.display =
+        dropdownMenu.style.display === "block" ? "none" : "block";
+};
+
+// Close dropdown when clicking outside
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".dropdown")) {
+        dropdownMenu.style.display = "none";
+    }
+});
+// SEARCH DROPDOWN
+const searchInput = document.getElementById("searchInput");
+const searchDropdown = document.getElementById("searchDropdown");
+
+// Show dropdown when input is clicked/focused
+searchInput.addEventListener("focus", () => {
+    searchDropdown.style.display = "flex";  // show
+});
+
+// Hide dropdown when clicking outside the search box
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-box")) {
+        searchDropdown.style.display = "none"; // hide
+    }
+});
+</script>
+</body>
+</html>
